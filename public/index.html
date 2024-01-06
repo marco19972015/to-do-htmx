@@ -16,13 +16,11 @@
         <h1 class="text-2xl font-bold my-5">
             Simple Request Example
         </h1>
-        <!-- hx-get make a get request to the following URL. hx-trigger allows us to change how to react to the event -->
-        <!-- Allows us to swap out the button for the response -->
-        <!-- we can replace outerHTML for other selectors, but in this case the outer HTML will replaces by the JSON array -->
         <button hx-swap="outerHTML"
-        hx-get="https://jsonplaceholder.typicode.com/users" hx-trigger="click"
-        class="bg-blue-500 text-white py-2 px-3 my-5 rounded-lg">
-            Fetch Users
+                hx-get="/users" 
+                hx-trigger="click"
+                class="bg-blue-500 text-white py-2 px-3 my-5 rounded-lg">
+                Fetch Users
         </button>
     </div>
     
