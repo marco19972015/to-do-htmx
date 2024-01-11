@@ -6,16 +6,8 @@ import express from 'express';
 // We initialize it into this app variable
 const app = express();
 
-
-// These lines below are middleware
-// Set static folder
-  // This will make the public folder we create is static, and we can just serve HTML files from it  
 app.use(express.static('public'));
-
-// These two lines below are middleswares so we can get data from JSON API clients or form bodies
-// Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: true }));
-// Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 
 // Handle GET request to fetch users 
@@ -27,13 +19,13 @@ app.get('/users', async (req, res) => {
     //     {id: 3, name: 'Eddy Ed'},
     // ];
 
-    // set 2 seconds to impersonate a server wait using setTimeout
     setTimeout(async () => {
-    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+    // we make req.query.limit a number by adding + to the front of it
+    const limit = +req.query.limit || 10;
+
+    const response = await fetch(`https://jsonplaceholder.typicode.com/users?_limit=${limit}`);
     const users = await response.json()
 
-    // use the res prop (contains the send method), and add back-tiques so it can be a template string
-    // Initially I return an array (map), but adding .join and empty string returns us a string
     res.send(`
         <h1 class="text-2xl font-bold my-4">Users</h1>
         <ul>

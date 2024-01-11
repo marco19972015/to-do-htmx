@@ -16,8 +16,9 @@
         <h1 class="text-2xl font-bold my-5">
             Simple Request Example
         </h1>
-        <!-- We can set hx-indicator to an element we want to show when we are interacting with a server  -->
-        <button hx-indicator="#loading"
+        <!-- We can send data with our request using hx-vals example: a limit on how many users we want-->
+        <button hx-vals='{"limit": 5}'
+                hx-indicator="#loading"
                 hx-target="#users" 
                 hx-get="/users" 
                 hx-trigger="click"
