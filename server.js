@@ -27,6 +27,8 @@ app.get('/users', async (req, res) => {
     //     {id: 3, name: 'Eddy Ed'},
     // ];
 
+    // set 2 seconds to impersonate a server wait using setTimeout
+    setTimeout(async () => {
     const response = await fetch('https://jsonplaceholder.typicode.com/users');
     const users = await response.json()
 
@@ -37,7 +39,10 @@ app.get('/users', async (req, res) => {
         <ul>
             ${users.map((user) => `<li>${user.name}</li>`).join('')}
         </ul>
-    `)
+    `);
+    }, 2000);
+
+    
 });
 
 // Start the server

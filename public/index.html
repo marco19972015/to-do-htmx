@@ -16,14 +16,19 @@
         <h1 class="text-2xl font-bold my-5">
             Simple Request Example
         </h1>
-        
-        <button 
+        <!-- We can set hx-indicator to an element we want to show when we are interacting with a server  -->
+        <button hx-indicator="#loading"
                 hx-target="#users" 
                 hx-get="/users" 
                 hx-trigger="click"
                 class="bg-blue-500 text-white py-2 px-3 my-5 rounded-lg">
                 Fetch Users
         </button>
+
+        <!-- for hx-indicator to work it needs to be a span.htmx-indicator#idused -->
+        <span class="htmx-indicator" id="loading">
+            <img src="img/loader.gif" alt="Loading..." class="m-auto h-10">
+        </span>
 
         <div id="users"></div>
     </div>
