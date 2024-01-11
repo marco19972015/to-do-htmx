@@ -20,12 +20,15 @@ app.use(express.json());
 
 // Handle GET request to fetch users 
 // Create list of static users that we want to return from this route
-app.get('/users', (req, res) => {
-    const users = [
-        {id: 1, name: 'John Doe'},
-        {id: 2, name: 'Bob Williams'},
-        {id: 3, name: 'Eddy Ed'},
-    ];
+app.get('/users', async (req, res) => {
+    // const users = [
+    //     {id: 1, name: 'John Doe'},
+    //     {id: 2, name: 'Bob Williams'},
+    //     {id: 3, name: 'Eddy Ed'},
+    // ];
+
+    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+    const users = await response.json()
 
     // use the res prop (contains the send method), and add back-tiques so it can be a template string
     // Initially I return an array (map), but adding .join and empty string returns us a string
