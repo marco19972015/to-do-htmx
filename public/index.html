@@ -12,38 +12,14 @@
     <title>HTMX Crash Course</title>
 </head>
 <body>
-    <div class="bg-gray-100">
-        <div class="container mx-auto mt-8 text-center">
-            <div class="bg-white p-4 border rounded-lg max-w-lg m-auto">
-                <h1 class="text-2xl font-bold mb-4">Temperature Converter</h1>
 
-                <!-- To make the request we need to add HTMX on the form -->
-                <!-- hx-trigger="submit", submit being the default -->
-                <form  
-                    hx-trigger="submit"
-                    hx-post="/convert"
-                    hx-target="#result"
-                    hx-indicator="#loading"
-                >
-                    <label for="fahrenheit">Fahrenheit:</label>
-                    <input type="number" 
-                           id="fahrenheit"
-                           name="fahrenheit"
-                           class="border p-2 rounded"
-                           value="32"
-                           required>
-                
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">
-                    Convert
-                </button>
-
-                <!-- This will be filled dynamically -->
-                <div id="result" class="mt-6 text-xl"></div>
-                <span class="htmx-indicator" id="loading">
-                    <img src="img/loader.gif" alt="Loading..." class="m-auto">
-                </span>
-            </div>
-        </div>
+    <div class="text-center">
+        <!--  hx-trigger will hit our poll endpoint every five seconds 
+              It will replace whatever that response into the span-->
+        <span hx-get="/poll" hx-trigger="every 5s">
+            Loading...
+        </span>
     </div>
+
 </body>
 </html>

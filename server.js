@@ -50,8 +50,20 @@ app.post('/convert', (req, res) =>{
                 degrees Celsius
             </p>
         `);
-    }, 0);
+    }, 2000);
 });
+
+let counter = 0;
+
+// Handle GET request for polling example
+app.get('/poll', (req, res) => {
+    // Simulating updated data
+    counter++;
+
+    const data = {value: counter};
+
+    res.json(data);
+})
 
 // Start the server
 app.listen(3000, () => {
